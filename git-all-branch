@@ -1,0 +1,11 @@
+#!/bin/bash
+directory=`pwd`
+repos=(commcare commcare-odk javarosa)
+for repo in ${repos[*]}
+do
+	cd $WORKSPACE/$repo
+	echo "==== $repo ===="
+	git branch -v
+	echo
+done
+cd $directory
