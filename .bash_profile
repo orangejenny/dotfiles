@@ -60,3 +60,33 @@ alias gas="git-all-status"
 
 alias b="git branch | grep '^\*' | sed 's/* //'"
 alias gp='git push origin $(b)'
+
+# default pt to regex search
+alias pt='pt -e'
+
+export LC_CTYPE=en_US.UTF-8
+export HISTCONTROL=ignorespace
+export HQ=~/Documents/Dimagi/commcare-hq
+export VELLUM=~/Documents/Dimagi/Vellum
+export HQVELLUM=~/Documents/Dimagi/commcare-hq/submodules/formdesigner
+export VELLUM_DIR=$VELLUM
+export VELLUM_STAGING_FIX=1
+
+alias ve="source ~/.virtualenvs/commcare-hq/bin/activate"
+
+# for tmuxinator
+export EDITOR=vim
+export PROMPT_COMMAND='history -a; history -r'
+
+# for pt
+export Home=/Users/jschweers
+
+function vimsearch() {
+    pt "$1" | cut -f1 -d: | sort -u | xargs -o vim
+}
+
+# open any files modified by git
+# doesn't open untracked files
+function gsopen() {
+    gs | grep modified: | cut -f2 -d: | xargs -o vim
+}
